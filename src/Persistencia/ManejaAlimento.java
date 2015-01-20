@@ -23,7 +23,7 @@ public class ManejaAlimento extends ManejaTabla {
     }
 
     public List<Alimento> alimentosCaducados() {
-        String statement = "{ call alimentosCaducados(?,?,?) }";
+        String statement = "{ call alimentosCaducados(?, ?, ?) }";
         Alimento alimento;
         LinkedList<Alimento> resultado = new LinkedList<>();
         try {
@@ -33,8 +33,8 @@ public class ManejaAlimento extends ManejaTabla {
             call.registerOutParameter(3, Types.VARCHAR);
             call.executeUpdate();
 
-            if (call.getString(2) == null) {
-                ResultSet rs = (ResultSet) call.getObject(1);
+            if (call.getString(3) == null) {
+                ResultSet rs = (ResultSet) call.getObject(2);
                 while (rs.next()) {
                     alimento = new Alimento(rs.getInt(1),
                             rs.getString(2),
