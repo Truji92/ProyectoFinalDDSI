@@ -37,6 +37,7 @@ public class Aplicacion_Cliente {
                     Menu.RecogidaDeAlimento(mAlimento, mRecoge, mPersona, mInstitucion, mEstablecimiento);
                     break;
                 case 5:
+                    Menu.actualizarCIF(mInstitucion);
                     break;
                 case 6:
                     break;

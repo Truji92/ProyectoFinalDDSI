@@ -213,8 +213,8 @@ public class Menu {
 
         Alimento alimento = new Alimento(mAlimento.generarClave(), descripcion, date);
 
-        List<Institucion> instituciones = mInstitucion.getInstituciones();
         List<Persona> personas = mPersona.getPersonas();
+        List<Institucion> instituciones = mInstitucion.getInstituciones();
 
         System.out.println("Instituciones actualmente en la base de datos: ");
         System.out.println("id - CIF - Nombre - Razón Social - Teléfono");
@@ -244,5 +244,35 @@ public class Menu {
         
         mRecoge.registraRecogida(idVoluntario, idEstablecimiento, alimento);
 
+    }
+
+    public static void actualizarCIF(ManejaInstitucion mInstitucion) {
+        List<Institucion> instituciones = mInstitucion.getInstituciones();
+
+        System.out.println("Instituciones actualmente en la base de datos: ");
+        System.out.println("id - CIF - Nombre - Razón Social - Teléfono");
+        for (Institucion i : instituciones) {
+            System.out.println(i.getIdVoluntario() + i.toString());
+        }
+
+        String cif = null;
+        do {
+            if (cif != null) {
+                System.out.println("CIF Incorrecto");
+            }
+            System.out.println("Introduzca CIF de la institución que desea modificar (con letra en mayuscula): ");
+            cif = Teclado.readString();
+        } while (!cif.matches("([A-Z]{1})(\\d{8})"));
+
+        String cifNuevo = null;
+        do {
+            if (cifNuevo != null) {
+                System.out.println("CIF Incorrecto");
+            }
+            System.out.println("Introduzca nuevo CIF (con letra en mayuscula): ");
+            cifNuevo = Teclado.readString();
+        } while (!cifNuevo.matches("([A-Z]{1})(\\d{8})"));
+
+        mInstitucion.cambiaCIF(cif, cifNuevo);
     }
 }
