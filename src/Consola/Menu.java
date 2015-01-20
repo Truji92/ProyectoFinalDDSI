@@ -168,10 +168,10 @@ public class Menu {
         String[] f1 = fecha1.split("/");
         Date date1 = new Date();
 
-        date1.setYear(Integer.parseInt(f1[2]) - 1900);
+        /*date1.setYear(Integer.parseInt(f1[2]) - 1900);
         date1.setMonth(Integer.parseInt(f1[1]) - 1);
         date1.setDate(Integer.parseInt(f1[0]));
-
+*/
         String fecha2 = null;
         do {
             System.out.println("Introduce fecha final (dd/mm/aaaa): ");
@@ -191,7 +191,7 @@ public class Menu {
         }
     }
 
-    public static void RecogidaDeAlimento(ManejaAlimento mAlimento, ManejaRecoge mRecoge, ManejaPersona mPersona, ManejaInstitucion mInstitucion, ManejaEstablecimiento mEstablecimiento) {
+        public static void RecogidaDeAlimento(ManejaAlimento mAlimento, ManejaRecoge mRecoge, ManejaPersona mPersona, ManejaInstitucion mInstitucion, ManejaEstablecimiento mEstablecimiento) {
         String descripcion;
         System.out.println("Introduzca descripción del alimento: ");
         descripcion = Teclado.readString();
@@ -218,14 +218,16 @@ public class Menu {
         System.out.println("Instituciones actualmente en la base de datos: ");
         System.out.println("id - CIF - Nombre - Razón Social - Teléfono");
         for (Institucion i : instituciones) {
-            System.out.println(i.getIdVoluntario() + i.toString());
+            int idv = i.getIdVoluntario();
+            System.out.println(idv +", "+ i.toString());
             idsVoluntarios.add(i.getIdVoluntario());
         }
 
         System.out.println("\nPersonas actualmente en la base de datos: ");
         System.out.println("id - dni - nombre - apellido1 - apellido2 - tlf - email -  edad - localidad");
         for (Persona p : personas) {
-            System.out.println(p.getIdVoluntario() + p.toString());
+            int idv = p.getIdVoluntario();
+            System.out.println(idv +", "+ p.toString());
             idsVoluntarios.add(p.getIdVoluntario());
         }
 
@@ -267,7 +269,7 @@ public class Menu {
         System.out.println("Instituciones actualmente en la base de datos: ");
         System.out.println("id - CIF - Nombre - Razón Social - Teléfono");
         for (Institucion i : instituciones) {
-            System.out.println(i.getIdVoluntario() + i.toString());
+            System.out.println(i.getIdVoluntario() +", "+ i.toString());
         }
 
         String cif = null;
@@ -313,14 +315,14 @@ public class Menu {
         System.out.println("Instituciones actualmente en la base de datos: ");
         System.out.println("id - CIF - Nombre - Razón Social - Teléfono");
         for (Institucion i : instituciones) {
-            System.out.println(i.getIdVoluntario() + i.toString());
+            System.out.println(i.getIdVoluntario() + ", "+i.toString());
             idsVoluntarios.add(i.getIdVoluntario());
         }
 
         System.out.println("\nPersonas actualmente en la base de datos: ");
         System.out.println("id - dni - nombre - apellido1 - apellido2 - tlf - email -  edad - localidad");
         for (Persona p : personas) {
-            System.out.println(p.getIdVoluntario() + p.toString());
+            System.out.println(p.getIdVoluntario() + ", "+p.toString());
             idsVoluntarios.add(p.getIdVoluntario());
         }
 

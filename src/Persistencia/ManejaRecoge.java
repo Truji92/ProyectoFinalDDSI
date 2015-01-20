@@ -33,7 +33,7 @@ public class ManejaRecoge extends ManejaTabla {
                     "establecimiento=" + idE + " AND " +
                     "fecha_recogida> '" + desde + "' AND " +
                     "fecha_recogida< '" + hasta + "')";
-            System.out.println(statement);
+            
             ResultSet rs = stmt.executeQuery(statement);
 
             while (rs.next()) {
@@ -62,7 +62,7 @@ public class ManejaRecoge extends ManejaTabla {
                     "'" + idE + "'," +
                     "'" + Fecha.fecha() + "'," +
                     "Null, 0)";
-            System.out.println(statement);
+            
             ResultSet rs = stmt.executeQuery(statement);
         } catch (SQLException ex) {
             System.out.println("Error al insertar en la tabla RECOGE");
@@ -90,7 +90,7 @@ public class ManejaRecoge extends ManejaTabla {
                     + "RECOGE r inner join ESTABLECIMIENTO e "
                     + "on r.establecimiento=e.id) on a.id=r.alimento "
                     + "where r.voluntario='" + idVoluntario + "'";
-            System.out.println(statement);
+            
             ResultSet rs = stmt.executeQuery(statement);
             Alimento alimento;
             Establecimiento estab;

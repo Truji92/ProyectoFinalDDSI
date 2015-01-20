@@ -57,7 +57,7 @@ public class ManejaPersona extends ManejaTabla {
                     rs.getString("apellido1"),
                     rs.getString("apellido2"),
                     rs.getString("telefono"),
-                    rs.getString("email"),
+                    rs.getString("e_mail"),
                     rs.getInt("edad"),
                     rs.getString("localidad"),
                     idVoluntario);
@@ -105,7 +105,7 @@ public class ManejaPersona extends ManejaTabla {
                         rs.getString("apellido1"),
                         rs.getString("apellido2"),
                         rs.getString("telefono"),
-                        rs.getString("email"),
+                        rs.getString("e_mail"),
                         rs.getInt("edad"),
                         rs.getString("localidad"),
                         rs.getInt("idVoluntario")));
