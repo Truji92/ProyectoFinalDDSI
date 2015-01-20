@@ -7,17 +7,16 @@ package Aplicacion;
 
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.util.Date;
-
+import java.sql.Date;
 
 
 public class Fecha {
     public static String fecha() {
-        Date fecha = new Date();
+        java.util.Date fecha = new java.util.Date();
         DateFormat hour = new SimpleDateFormat("dd/MM/yyyy");
         return hour.format(fecha);
     }
-    
+
     public static String fecha(Date date) {
         DateFormat hour = new SimpleDateFormat("dd/MM/yyyy");
         return hour.format(date);

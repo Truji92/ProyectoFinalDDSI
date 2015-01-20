@@ -9,14 +9,12 @@ import Aplicacion.ConexionOracle;
 import Aplicacion.Fecha;
 import Datos.Alimento;
 import Datos.Establecimiento;
-import Datos.Institucion;
-import Datos.Persona;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
-import java.util.Date;
 
 
 public class ManejaRecoge extends ManejaTabla {
@@ -24,24 +22,24 @@ public class ManejaRecoge extends ManejaTabla {
     public ManejaRecoge(ConexionOracle conn) {
         super(conn);
     }
-    
-    public List<Alimento> listadoAlimentos(int idE, 
-                            Date desde, 
-                            Date hasta) {
+
+    public List<Alimento> listadoAlimentos(int idE,
+                                           String desde,
+                                           String hasta) {
         LinkedList<Alimento> resultado = new LinkedList<>();
         try (Statement stmt = conn.createStatement()) {
             String statement = "select * from ALIMENTO where " +
-                    "id in ( select alimento from RECOGE where " + 
+                    "id in ( select alimento from RECOGE where " +
                     "establecimiento=" + idE + " AND " +
-                    "fecha_recogida> '" + Fecha.fecha(desde) + "' AND " +
-                    "fecha_recogida< '" + Fecha.fecha(hasta) + "')";
+                    "fecha_recogida> '" + desde + "' AND " +
+                    "fecha_recogida< '" + hasta + "')";
             System.out.println(statement);
             ResultSet rs = stmt.executeQuery(statement);
-            
-            while(rs.next()) {
+
+            while (rs.next()) {
                 int _id = rs.getInt(1);
                 String _desc = rs.getString(2);
-                Date _fecha = rs.getDate(3);
+                String _fecha = Fecha.fecha(rs.getDate(3));
                 resultado.add(new Alimento(_id, _desc, _fecha));
             }
         } catch (SQLException ex) {
@@ -52,17 +50,17 @@ public class ManejaRecoge extends ManejaTabla {
         }
         return resultado;
     }
-    
+
     public void registraRecogida(int idV, int idE, Alimento a) {
         ManejaAlimento mAli = new ManejaAlimento(conn);
         mAli.insertarAlimento(a);
-        
+
         try (Statement stmt = conn.createStatement()) {
             String statement = "insert into RECOGE values (" +
                     "'" + a.getId() + "'," +
                     "'" + idV + "'," +
-                    "'" + idE + "'," + 
-                    "'" + Fecha.fecha()+ "'," +
+                    "'" + idE + "'," +
+                    "'" + Fecha.fecha() + "'," +
                     "Null, 0)";
             System.out.println(statement);
             ResultSet rs = stmt.executeQuery(statement);
@@ -73,12 +71,12 @@ public class ManejaRecoge extends ManejaTabla {
             System.out.println(ex.getErrorCode());
             conn.rollBack();
         }
-        
+
     }
-    
-    public void productosRecogidos( int idVoluntario,
-                                    List<Alimento> a,
-                                    List<Establecimiento> e) {
+
+    public void productosRecogidos(int idVoluntario,
+                                   List<Alimento> a,
+                                   List<Establecimiento> e) {
         boolean soloInfo = false;
         try (Statement stmt = conn.createStatement()) {
             String statement = "select a.id, "
@@ -98,14 +96,14 @@ public class ManejaRecoge extends ManejaTabla {
             Establecimiento estab;
             a.clear();
             e.clear();
-            while(rs.next()) {
-                alimento = new Alimento(rs.getInt(1), 
-                                        rs.getString(2),
-                                        rs.getDate(3));
+            while (rs.next()) {
+                alimento = new Alimento(rs.getInt(1),
+                        rs.getString(2),
+                        Fecha.fecha(rs.getDate(3)));
                 estab = new Establecimiento(rs.getInt(4),
-                                            rs.getString(5),
-                                            rs.getString(6),
-                                            rs.getString(7));
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getString(7));
                 a.add(alimento);
                 e.add(estab);
             }

@@ -9,9 +9,9 @@ import Aplicacion.ConexionOracle;
 
 
 public class ManejaTabla {
-    
+
     protected ConexionOracle conn;
-    
+
     public ManejaTabla(ConexionOracle conn) {
         this.conn = conn;
     }

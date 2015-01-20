@@ -1,6 +1,6 @@
 package Aplicacion;
 
-import Interfaz.Menu;
+import Consola.Menu;
 import Persistencia.ManejaAlimento;
 import Persistencia.ManejaEstablecimiento;
 import Persistencia.ManejaInstitucion;
@@ -64,7 +64,6 @@ public class Aplicacion_Cliente {
             }
 
         } while (opcion != 0);
-
 
 
         conexion.Desconexion();

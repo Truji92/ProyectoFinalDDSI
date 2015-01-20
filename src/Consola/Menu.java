@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Interfaz;
+package Consola;
 
 import Datos.Alimento;
 import Datos.Establecimiento;
@@ -159,33 +159,33 @@ public class Menu {
 
         System.out.println("Introduce el id del establecimiento a consultar: ");
         int id = Teclado.readInt();
-        
+
         String fecha1 = null;
         do {
             System.out.println("Introduce fecha inicial (dd/mm/aaaa): ");
             fecha1 = Teclado.readString();
-        }while(!fecha1.matches("([0][1-9]|[12][0-9]|3[01])(/|-)([0][1-9]|[1][0-2])\\2(\\d{4})"));
+        } while (!fecha1.matches("([0][1-9]|[12][0-9]|3[01])(/|-)([0][1-9]|[1][0-2])\\2(\\d{4})"));
         String[] f1 = fecha1.split("/");
         Date date1 = new Date();
-        
-        date1.setYear(Integer.parseInt(f1[2])-1900);
-        date1.setMonth(Integer.parseInt(f1[1])-1);
+
+        date1.setYear(Integer.parseInt(f1[2]) - 1900);
+        date1.setMonth(Integer.parseInt(f1[1]) - 1);
         date1.setDate(Integer.parseInt(f1[0]));
-        
+
         String fecha2 = null;
         do {
             System.out.println("Introduce fecha final (dd/mm/aaaa): ");
             fecha2 = Teclado.readString();
-        }while(!fecha1.matches("([0][1-9]|[12][0-9]|3[01])(\\/|-)([0][1-9]|[1][0-2])\\2(\\d{4})"));
+        } while (!fecha1.matches("([0][1-9]|[12][0-9]|3[01])(\\/|-)([0][1-9]|[1][0-2])\\2(\\d{4})"));
         String[] f2 = fecha2.split("/");
         Date date2 = new Date();
-        
-        date2.setYear(Integer.parseInt(f2[2])-1900);
-        date2.setMonth(Integer.parseInt(f2[1])-1);
+
+        date2.setYear(Integer.parseInt(f2[2]) - 1900);
+        date2.setMonth(Integer.parseInt(f2[1]) - 1);
         date2.setDate(Integer.parseInt(f2[0]));
-        
+
         System.out.println("Alimentos recogidos: ");
-        List<Alimento> alimentos = mRecoge.listadoAlimentos(id, date1, date2);
+        List<Alimento> alimentos = mRecoge.listadoAlimentos(id, fecha1, fecha2);
         for (Alimento a : alimentos) {
             System.out.println(a);
         }
@@ -200,15 +200,15 @@ public class Menu {
         do {
             System.out.println("Introduce fecha de caducidad (dd/mm/aaaa): ");
             fecha = Teclado.readString();
-        }while(!fecha.matches("([0][1-9]|[12][0-9]|3[01])(\\/|-)([0][1-9]|[1][0-2])\\2(\\d{4})"));
+        } while (!fecha.matches("([0][1-9]|[12][0-9]|3[01])(\\/|-)([0][1-9]|[1][0-2])\\2(\\d{4})"));
         String[] arrayFecha = fecha.split("/");
         Date date = new Date();
 
-        date.setYear(Integer.parseInt(arrayFecha[2]) - 1900);
-        date.setMonth(Integer.parseInt(arrayFecha[1]) - 1);
-        date.setDate(Integer.parseInt(arrayFecha[0]));
+       // date.setYear(Integer.parseInt(arrayFecha[2]) - 1900);
+        //date.setMonth(Integer.parseInt(arrayFecha[1]) - 1);
+        //date.setDate(Integer.parseInt(arrayFecha[0]));
 
-        Alimento alimento = new Alimento(mAlimento.generarClave(), descripcion, date);
+        Alimento alimento = new Alimento(mAlimento.generarClave(), descripcion, fecha);
 
         List<Persona> personas = mPersona.getPersonas();
         List<Institucion> instituciones = mInstitucion.getInstituciones();
@@ -237,7 +237,7 @@ public class Menu {
             primero = false;
             System.out.println("Introduzca el id del voluntario (persona o institución) que realiza la recogida: ");
             idVoluntario = Teclado.readInt();
-        }while (!idsVoluntarios.contains(idVoluntario));
+        } while (!idsVoluntarios.contains(idVoluntario));
 
         List<Establecimiento> establecimientos = mEstablecimiento.getEstablecimientos();
         System.out.println("Establecimientos registrados en la base de datos: ");
@@ -298,7 +298,7 @@ public class Menu {
             System.out.println(a);
         }
 
-        for(Alimento a : alimentos) {
+        for (Alimento a : alimentos) {
             mAlimento.eliminaAlimento(a.getId());
         }
 
@@ -332,7 +332,7 @@ public class Menu {
             primero = false;
             System.out.println("Introduzca el id del voluntario (persona o institución) que desea consultar: ");
             idVoluntario = Teclado.readInt();
-        }while (!idsVoluntarios.contains(idVoluntario));
+        } while (!idsVoluntarios.contains(idVoluntario));
 
         List<Alimento> alimentos = new LinkedList<>();
         List<Establecimiento> establecimientos = new LinkedList<>();
@@ -342,7 +342,7 @@ public class Menu {
         Persona persona;
         Institucion institucion;
         if (alimentos.size() <= 5) {
-            if(!mPersona.existeVoluntario(idVoluntario)) {
+            if (!mPersona.existeVoluntario(idVoluntario)) {
                 institucion = mInstitucion.getVoluntario(idVoluntario);
                 System.out.println(institucion);
             } else {

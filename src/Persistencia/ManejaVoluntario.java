@@ -6,17 +6,18 @@
 package Persistencia;
 
 import Aplicacion.ConexionOracle;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
 
-public class ManejaVoluntario  extends ManejaTabla {
+public class ManejaVoluntario extends ManejaTabla {
 
     public ManejaVoluntario(ConexionOracle conn) {
         super(conn);
     }
-    
+
     public void eliminaVoluntario(int idVoluntario) {
         try (Statement stmt = conn.createStatement()) {
             String statement = "delete from VOLUNTARIO where id=" +
@@ -30,11 +31,11 @@ public class ManejaVoluntario  extends ManejaTabla {
             conn.rollBack();
         }
     }
-    
+
     public int insertaVoluntario() {
         int clave = generarClave();
         try (Statement stmt = conn.createStatement()) {
-            String statement = 
+            String statement =
                     "insert into VOLUNTARIO values ('" + clave + "')";
             stmt.executeQuery(statement);
         } catch (SQLException e) {
@@ -46,13 +47,13 @@ public class ManejaVoluntario  extends ManejaTabla {
         }
         return clave;
     }
-    
+
     public boolean existeVoluntario(int idVoluntario) {
         int cuenta = -1;
-        try(Statement stmt = conn.createStatement()) {
+        try (Statement stmt = conn.createStatement()) {
             String statement = "select count(*) "
-                        + "from VOLUNTARIO "
-                        + "where id='" + idVoluntario + "'";
+                    + "from VOLUNTARIO "
+                    + "where id='" + idVoluntario + "'";
             ResultSet rs = stmt.executeQuery(statement);
             rs.next();
             cuenta = rs.getInt(1);
@@ -62,9 +63,9 @@ public class ManejaVoluntario  extends ManejaTabla {
             System.out.println(ex.getSQLState());
             System.out.println(ex.getErrorCode());
         }
-        return cuenta==1;
+        return cuenta == 1;
     }
-        
+
     public int generarClave() {
         String statement = "SELECT MAX(id) FROM VOLUNTARIO";
         int maximaClave = -1;
@@ -74,7 +75,7 @@ public class ManejaVoluntario  extends ManejaTabla {
             rs.next();
             maximaClave = rs.getInt(1);
             maximaClave++;
-        } catch (SQLException ex){
+        } catch (SQLException ex) {
             System.out.println("Error al consultar clave de Voluntario");
             System.out.println(ex.getMessage());
             System.out.println(ex.getSQLState());

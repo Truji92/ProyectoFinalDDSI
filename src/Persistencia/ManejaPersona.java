@@ -7,6 +7,7 @@ package Persistencia;
 
 import Aplicacion.ConexionOracle;
 import Datos.Persona;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -19,7 +20,7 @@ public class ManejaPersona extends ManejaTabla {
     public ManejaPersona(ConexionOracle conn) {
         super(conn);
     }
-    
+
     public void insertaPersona(Persona p) {
         ManejaVoluntario mVol = new ManejaVoluntario(conn);
         int clave = mVol.insertaVoluntario();
@@ -43,16 +44,16 @@ public class ManejaPersona extends ManejaTabla {
             conn.rollBack();
         }
     }
-    
+
     public Persona getVoluntario(int idVoluntario) {
         Persona persona = null;
-        try(Statement stmt = conn.createStatement()) {
+        try (Statement stmt = conn.createStatement()) {
             String statement = "select * from PERSONA "
                     + "where idVoluntario='" + idVoluntario + "'";
             ResultSet rs = stmt.executeQuery(statement);
             rs.next();
             persona = new Persona(rs.getString("dni"),
-                    rs.getString("nombre"), 
+                    rs.getString("nombre"),
                     rs.getString("apellido1"),
                     rs.getString("apellido2"),
                     rs.getString("telefono"),
@@ -68,13 +69,13 @@ public class ManejaPersona extends ManejaTabla {
         }
         return persona;
     }
-    
+
     public boolean existeVoluntario(int idVoluntario) {
         int cuenta = -1;
-        try(Statement stmt = conn.createStatement()) {
+        try (Statement stmt = conn.createStatement()) {
             String statement = "select count(*) "
-                        + "from PERSONA "
-                        + "where idVoluntario='" + idVoluntario + "'";
+                    + "from PERSONA "
+                    + "where idVoluntario='" + idVoluntario + "'";
             ResultSet rs = stmt.executeQuery(statement);
             rs.next();
             cuenta = rs.getInt(1);
@@ -84,9 +85,9 @@ public class ManejaPersona extends ManejaTabla {
             System.out.println(ex.getSQLState());
             System.out.println(ex.getErrorCode());
         }
-        return cuenta==1;
+        return cuenta == 1;
     }
-    
+
     public int generarClave() {
         ManejaVoluntario mVol = new ManejaVoluntario(conn);
         return mVol.generarClave();

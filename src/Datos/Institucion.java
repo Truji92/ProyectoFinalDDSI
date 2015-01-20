@@ -25,7 +25,7 @@ public class Institucion {
         this.tlf = tlf;
         this.idVoluntario = idVoluntario;
     }
-    
+
     public void setInstitucion(String CIF, String nombre, String rSocial, String tlf, int idVoluntario) {
         this.CIF = CIF;
         this.nombre = nombre;
@@ -33,21 +33,47 @@ public class Institucion {
         this.tlf = tlf;
         this.idVoluntario = idVoluntario;
     }
-    public String getCIF() { return CIF; }
-    public String getNombre() { return nombre; }
-    public String getrSocial() { return rSocial; }
-    public String getTlf() { return tlf; }
-    public int getIdVoluntario() { return idVoluntario; }
-    
-    public void setCIF(String CIF) { this.CIF = CIF; }
-    public void setNombre(String nombre) { this.nombre = nombre; }
-    public void setrSocial(String rSocial) { this.rSocial = rSocial; }
-    public void setTlf(String tlf) { this.tlf = tlf; }
+
+    public String getCIF() {
+        return CIF;
+    }
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getrSocial() {
+        return rSocial;
+    }
+
+    public String getTlf() {
+        return tlf;
+    }
+
+    public int getIdVoluntario() {
+        return idVoluntario;
+    }
+
+    public void setCIF(String CIF) {
+        this.CIF = CIF;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public void setrSocial(String rSocial) {
+        this.rSocial = rSocial;
+    }
+
+    public void setTlf(String tlf) {
+        this.tlf = tlf;
+    }
 
     @Override
     public String toString() {
         return CIF + ", " + nombre + ", " + rSocial + ", " + tlf;
     }
-    
-    
+
+
 }

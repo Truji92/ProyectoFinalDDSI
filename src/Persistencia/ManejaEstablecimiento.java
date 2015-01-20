@@ -7,6 +7,7 @@ package Persistencia;
 
 import Aplicacion.ConexionOracle;
 import Datos.Establecimiento;
+
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -64,9 +65,9 @@ public class ManejaEstablecimiento extends ManejaTabla {
             ResultSet rs = stmt.executeQuery(statement);
             while (rs.next())
                 establecimientos.add(new Establecimiento(rs.getInt("id"),
-                    rs.getString("nombre"),
-                    rs.getString("direccion"),
-                    rs.getString("localidad")));
+                        rs.getString("nombre"),
+                        rs.getString("direccion"),
+                        rs.getString("localidad")));
         } catch (SQLException ex) {
             System.out.println("Error al consultar la tabla ESTABLECIMIENTO");
             System.out.println(ex.getMessage());

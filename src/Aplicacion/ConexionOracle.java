@@ -34,7 +34,7 @@ public class ConexionOracle {
             e.printStackTrace();
         }
     }
-    
+
     public Statement createStatement() {
         Statement s = null;
         try {
@@ -44,7 +44,7 @@ public class ConexionOracle {
         }
         return s;
     }
-    
+
     public CallableStatement prepareCall(String stmt) {
         CallableStatement call = null;
         try {
@@ -53,9 +53,9 @@ public class ConexionOracle {
             Logger.getLogger(ConexionOracle.class.getName()).log(Level.SEVERE, null, ex);
         }
         return call;
-        
+
     }
-    
+
     public void commit() {
         try {
             conn.commit();
@@ -63,7 +63,7 @@ public class ConexionOracle {
             ex.printStackTrace();
         }
     }
-    
+
     public void rollBack() {
         try {
             conn.rollback();

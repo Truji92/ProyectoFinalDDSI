@@ -7,7 +7,7 @@ package Persistencia;
 
 import Aplicacion.ConexionOracle;
 import Datos.Alimento;
-import java.util.Date;
+
 import java.util.LinkedList;
 
 
@@ -29,7 +29,7 @@ public class TestManejaAlimento {
         // probar insertarAlimento
         mAlim.insertarAlimento(new Alimento(mAlim.generarClave(), 
                 "grillo frito", 
-                new Date(2015, 06, 10)));
+                "06/10/2015"));
         
         conn.Desconexion();
     }

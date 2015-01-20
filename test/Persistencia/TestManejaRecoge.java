@@ -12,7 +12,7 @@ import Datos.Alimento;
 import Datos.Establecimiento;
 import Datos.Institucion;
 import Datos.Persona;
-import java.util.Date;
+
 import java.util.LinkedList;
 
 
@@ -21,7 +21,7 @@ public class TestManejaRecoge {
         ConexionOracle conn = new ConexionOracle();
         conn.Conexion();
         ManejaRecoge mr = new ManejaRecoge(conn);
-        Alimento a = new Alimento(10, "papa cocia", new Date(2015, 4, 1));
+        Alimento a = new Alimento(10, "papa cocia", "04/01/2015");
         
         mr.registraRecogida(3, 1, a);
         
@@ -34,15 +34,15 @@ public class TestManejaRecoge {
         for(int index=0;index<alimentos.size();index++) {
             System.out.println(alimentos.get(index).toString() +" " +  establs.get(index).toString());
         }
-        a = new Alimento(11, "papa cocia", new Date(2015, 4, 1));
+        a = new Alimento(11, "papa cocia",  "04/01/2015");
         mr.registraRecogida(3, 1, a);
-        a = new Alimento(12, "papa cocia", new Date(2015, 4, 1));
+        a = new Alimento(12, "papa cocia",  "04/01/2015");
         mr.registraRecogida(3, 1, a);
-        a = new Alimento(13, "papa cocia", new Date(2015, 4, 1));
+        a = new Alimento(13, "papa cocia",  "04/01/2015");
         mr.registraRecogida(3, 1, a);
-        a = new Alimento(14, "papa cocia", new Date(2015, 4, 1));
+        a = new Alimento(14, "papa cocia",  "04/01/2015");
         mr.registraRecogida(3, 1, a);
-        a = new Alimento(15, "papa cocia", new Date(2015, 4, 1));
+        a = new Alimento(15, "papa cocia", "04/01/2015");
         mr.registraRecogida(3, 1, a);
         
 
