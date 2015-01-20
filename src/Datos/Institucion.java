@@ -12,8 +12,8 @@ public class Institucion {
     private int idVoluntario;
     private String CIF;
     private String nombre;
-    private String rSocial;
-    private String tlf;
+    private String razonSocial;
+    private String telefono;
 
     public Institucion() {
     }
@@ -21,16 +21,16 @@ public class Institucion {
     public Institucion(String CIF, String nombre, String rSocial, String tlf, int idVoluntario) {
         this.CIF = CIF;
         this.nombre = nombre;
-        this.rSocial = rSocial;
-        this.tlf = tlf;
+        this.razonSocial = rSocial;
+        this.telefono = tlf;
         this.idVoluntario = idVoluntario;
     }
 
     public void setInstitucion(String CIF, String nombre, String rSocial, String tlf, int idVoluntario) {
         this.CIF = CIF;
         this.nombre = nombre;
-        this.rSocial = rSocial;
-        this.tlf = tlf;
+        this.razonSocial = rSocial;
+        this.telefono = tlf;
         this.idVoluntario = idVoluntario;
     }
 
@@ -42,12 +42,12 @@ public class Institucion {
         return nombre;
     }
 
-    public String getrSocial() {
-        return rSocial;
+    public String getRazonSocial() {
+        return razonSocial;
     }
 
-    public String getTlf() {
-        return tlf;
+    public String getTelefono() {
+        return telefono;
     }
 
     public int getIdVoluntario() {
@@ -62,17 +62,17 @@ public class Institucion {
         this.nombre = nombre;
     }
 
-    public void setrSocial(String rSocial) {
-        this.rSocial = rSocial;
+    public void setRazonSocial(String razonSocial) {
+        this.razonSocial = razonSocial;
     }
 
-    public void setTlf(String tlf) {
-        this.tlf = tlf;
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
     @Override
     public String toString() {
-        return CIF + ", " + nombre + ", " + rSocial + ", " + tlf;
+        return CIF + ", " + nombre + ", " + razonSocial + ", " + telefono;
     }
 
 

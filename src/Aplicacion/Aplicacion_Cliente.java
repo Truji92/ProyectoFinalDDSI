@@ -11,9 +11,9 @@ public class Aplicacion_Cliente {
 
     public static void main(String[] args) {
         ConexionOracle conexion = new ConexionOracle();
-        System.out.println("conectando...");
+        System.out.println("Conectando...");
         conexion.Conexion();
-        System.out.println("conectado !!");
+        System.out.println("Conectado !!");
 
         int opcion;
         do {

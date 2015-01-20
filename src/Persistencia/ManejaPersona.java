@@ -33,7 +33,7 @@ public class ManejaPersona extends ManejaTabla {
                     "'" + p.getEdad() + "'," +
                     "'" + p.getEmail() + "'," +
                     "'" + p.getLocalidad() + "'," +
-                    "'" + p.getTlf() + "'," +
+                    "'" + p.getTelefono() + "'," +
                     "'" + clave + "')";
             stmt.executeQuery(statement);
         } catch (SQLException e) {

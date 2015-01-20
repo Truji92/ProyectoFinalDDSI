@@ -12,7 +12,7 @@ public class Persona {
     private String nombre;
     private String apellido1;
     private String apellido2;
-    private String tlf;
+    private String telefono;
     private String email;
     private int edad;
     private String localidad;
@@ -28,7 +28,7 @@ public class Persona {
         this.nombre = nombre;
         this.apellido1 = apellido1;
         this.apellido2 = apellido2;
-        this.tlf = tlf;
+        this.telefono = tlf;
         this.email = email;
         this.edad = edad;
         this.localidad = localidad;
@@ -42,7 +42,7 @@ public class Persona {
         this.nombre = nombre;
         this.apellido1 = apellido1;
         this.apellido2 = apellido2;
-        this.tlf = tlf;
+        this.telefono = tlf;
         this.email = email;
         this.edad = edad;
         this.localidad = localidad;
@@ -65,8 +65,8 @@ public class Persona {
         return apellido2;
     }
 
-    public String getTlf() {
-        return tlf;
+    public String getTelefono() {
+        return telefono;
     }
 
     public String getEmail() {
@@ -101,8 +101,8 @@ public class Persona {
         this.apellido2 = apellido2;
     }
 
-    public void setTlf(String tlf) {
-        this.tlf = tlf;
+    public void setTelefono(String telefono) {
+        this.telefono = telefono;
     }
 
     public void setEmail(String email) {
@@ -124,7 +124,7 @@ public class Persona {
 
     @Override
     public String toString() {
-        return dni + ", " + nombre + ", " + apellido1 + ", " + apellido2 + ", " + tlf + ", " + email + ", " + edad + ", " + localidad;
+        return dni + ", " + nombre + ", " + apellido1 + ", " + apellido2 + ", " + telefono + ", " + email + ", " + edad + ", " + localidad;
     }
 
 

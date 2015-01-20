@@ -94,7 +94,7 @@ public class Menu {
             System.out.println("Introduzca telefono: ");
             telefono = Teclado.readString();
         } while (!telefono.matches("(\\d{9})"));
-        persona.setTlf(telefono);
+        persona.setTelefono(telefono);
 
         String email = null;
         do {

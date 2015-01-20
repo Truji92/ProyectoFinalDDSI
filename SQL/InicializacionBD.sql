@@ -24,11 +24,11 @@ insert into VOLUNTARIO values ('2');
 insert into VOLUNTARIO values ('3');
 insert into VOLUNTARIO values ('4');
 
------ INSTITUCION --------------- CIF --- nombre ---razon_social --- tlf --- idVol
+----- INSTITUCION --------------- CIF --- nombre ---razon_social --- telefono --- idVol
 insert into INSTITUCION values ('A12345678', 'UHU', 'blablarazon', '959999999', '1');
 insert into INSTITUCION values ('B12345678', 'Cruz Roja', 'wolololo', '959989999', '2');
 
------ PERSONA ------------------- DNI --- nombre --- apellido1 --- apellido2 --- edad ---email ---localidad--- tlf --- idvol
+----- PERSONA ------------------- DNI --- nombre --- apellido1 --- apellido2 --- edad ---email ---localidad--- telefono --- idvol
 insert into PERSONA values ('48949081K', 'Alejandro', 'Trujillo', 'Caballero', '22', 'alejandro@gmail.com', 'Mazagon', '637137623', '3');
 insert into PERSONA values ('00000000K', 'Paquito', 'Gonzalez', 'Fernandez', '21', 'eRpaKoShUlo@gmail.com', 'Huelva', '676666366', '4');
 
