@@ -310,5 +310,54 @@ public class Menu {
 
     public static void productosRecogidosPorVoluntario(ManejaInstitucion mInstitucion, ManejaPersona mPersona, ManejaRecoge mRecoge) {
 
+        List<Persona> personas = mPersona.getPersonas();
+        List<Institucion> instituciones = mInstitucion.getInstituciones();
+        List<Integer> idsVoluntarios = new LinkedList<>();
+
+        System.out.println("Instituciones actualmente en la base de datos: ");
+        System.out.println("id - CIF - Nombre - Razón Social - Teléfono");
+        for (Institucion i : instituciones) {
+            System.out.println(i.getIdVoluntario() + i.toString());
+            idsVoluntarios.add(i.getIdVoluntario());
+        }
+
+        System.out.println("\nPersonas actualmente en la base de datos: ");
+        System.out.println("id - dni - nombre - apellido1 - apellido2 - tlf - email -  edad - localidad");
+        for (Persona p : personas) {
+            System.out.println(p.getIdVoluntario() + p.toString());
+            idsVoluntarios.add(p.getIdVoluntario());
+        }
+
+
+        int idVoluntario;
+        boolean primero = true;
+        do {
+            if (!primero) System.out.println("id erroneo");
+            primero = false;
+            System.out.println("Introduzca el id del voluntario (persona o institución) que desea consultar: ");
+            idVoluntario = Teclado.readInt();
+        }while (!idsVoluntarios.contains(idVoluntario));
+
+        List<Alimento> alimentos = new LinkedList<>();
+        List<Establecimiento> establecimientos = new LinkedList<>();
+
+        mRecoge.productosRecogidos(idVoluntario, alimentos, establecimientos);
+
+        Persona persona;
+        Institucion institucion;
+        if (alimentos.size() <= 5) {
+            if(!mPersona.existeVoluntario(idVoluntario)) {
+                institucion = mInstitucion.getVoluntario(idVoluntario);
+                System.out.println(institucion);
+            } else {
+                persona = mPersona.getVoluntario(idVoluntario);
+                System.out.println(persona);
+            }
+        } else {
+            for (int i = 0; i < alimentos.size(); i++) {
+                System.out.println(alimentos.get(i).toString() + establecimientos.get(i).toString());
+            }
+        }
+
     }
 }

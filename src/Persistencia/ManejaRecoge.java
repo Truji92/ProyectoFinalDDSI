@@ -78,9 +78,7 @@ public class ManejaRecoge extends ManejaTabla {
         
     }
     
-    public boolean productosRecogidos( int idVoluntario,
-                                    Persona p,
-                                    Institucion i,
+    public void productosRecogidos( int idVoluntario,
                                     List<Alimento> a,
                                     List<Establecimiento> e) {
         boolean soloInfo = false;
@@ -113,24 +111,13 @@ public class ManejaRecoge extends ManejaTabla {
                 a.add(alimento);
                 e.add(estab);
             }
-            if(a.size() <= 5) {
-                soloInfo = true;
-            }
+
         } catch (SQLException ex) {
             System.out.println("Error al consultar la base de datos");
             System.out.println(ex.getMessage());
             System.out.println(ex.getSQLState());
             System.out.println(ex.getErrorCode());
         }
-        if(soloInfo) {
-            ManejaPersona mPer = new ManejaPersona(conn);
-            ManejaInstitucion mInst = new ManejaInstitucion(conn);
-            if(!mPer.existeVoluntario(idVoluntario)) {
-                i = mInst.getVoluntario(idVoluntario);
-            } else {
-                p = mPer.getVoluntario(idVoluntario);
-            }
-        }
-        return soloInfo;
+
     }
 }
