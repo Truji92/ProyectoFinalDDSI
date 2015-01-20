@@ -216,7 +216,7 @@ create table RECOGE (
 	CONSTRAINT recogeClave 
 		PRIMARY KEY (alimento),
 	CONSTRAINT alimentoAjena 
-		FOREIGN KEY (alimento) REFERENCES ALIMENTO (id),
+		FOREIGN KEY (alimento) REFERENCES ALIMENTO (id) on delete cascade,
 	CONSTRAINT voluntarioAje
 		FOREIGN KEY (voluntario) REFERENCES VOLUNTARIO (id) on delete set null,
 	CONSTRAINT establecimientoAjena 
