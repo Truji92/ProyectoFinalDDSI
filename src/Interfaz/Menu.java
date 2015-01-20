@@ -288,4 +288,8 @@ public class Menu {
         }
 
     }
+
+    public static void productosRecogidosPorVoluntario(ManejaInstitucion mInstitucion, ManejaPersona mPersona, ManejaRecoge mRecoge) {
+
+    }
 }

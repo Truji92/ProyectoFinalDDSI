@@ -117,7 +117,7 @@ public class ManejaRecoge extends ManejaTabla {
                 soloInfo = true;
             }
         } catch (SQLException ex) {
-            System.out.println("Error al consultar");
+            System.out.println("Error al consultar la base de datos");
             System.out.println(ex.getMessage());
             System.out.println(ex.getSQLState());
             System.out.println(ex.getErrorCode());

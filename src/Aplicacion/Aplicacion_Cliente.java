@@ -43,6 +43,7 @@ public class Aplicacion_Cliente {
                     Menu.alimentosCaducados(mAlimento);
                     break;
                 case 7:
+                    Menu.productosRecogidosPorVoluntario(mInstitucion, mPersona, mRecoge);
                     break;
                 default:
                     System.out.println("¡Adios!");
