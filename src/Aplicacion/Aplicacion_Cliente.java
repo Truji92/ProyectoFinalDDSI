@@ -18,20 +18,23 @@ public class Aplicacion_Cliente {
         int opcion;
         do {
             opcion = Menu.principal();
+            ManejaPersona mPersona = new ManejaPersona(conexion);
+            ManejaRecoge mRecoge = new ManejaRecoge(conexion);
+            ManejaEstablecimiento mEstablecimiento = new ManejaEstablecimiento(conexion);
+            ManejaAlimento mAlimento = new ManejaAlimento(conexion);
+            ManejaInstitucion mInstitucion = new ManejaInstitucion(conexion);
             switch (opcion) {
                 case 1:
-                    ManejaPersona mPersona = new ManejaPersona(conexion);
-                    mPersona.insertaPersona(Menu.insertaPersona());
+                    Menu.insertaPersona(mPersona);
                     break;
                 case 2:
-                    Menu.eliminaInstitucion(new ManejaInstitucion(conexion));
+                    Menu.eliminaInstitucion(mInstitucion);
                     break;
                 case 3:
-                    ManejaEstablecimiento mEstablecimiento = new ManejaEstablecimiento(conexion);
-                    ManejaRecoge mRecoge = new ManejaRecoge(conexion);
                     Menu.alimentosRecogidos(mEstablecimiento, mRecoge);
                     break;
                 case 4:
+                    Menu.RecogidaDeAlimento(mAlimento, mRecoge, mPersona, mInstitucion, mEstablecimiento);
                     break;
                 case 5:
                     break;

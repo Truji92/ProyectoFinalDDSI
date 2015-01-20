@@ -9,9 +9,8 @@ import Datos.Alimento;
 import Datos.Establecimiento;
 import Datos.Institucion;
 import Datos.Persona;
-import Persistencia.ManejaEstablecimiento;
-import Persistencia.ManejaInstitucion;
-import Persistencia.ManejaRecoge;
+import Persistencia.*;
+
 import java.util.Date;
 import java.util.List;
 
@@ -46,7 +45,7 @@ public class Menu {
         return eleccion;
     }
 
-    public static Persona insertaPersona() {
+    public static void insertaPersona(ManejaPersona mPersona) {
         Persona persona = new Persona();
 //    private int idVoluntario;
 //    private String dni;
@@ -130,8 +129,7 @@ public class Menu {
         } while (localidad.isEmpty());
         persona.setLocalidad(localidad);
 
-        System.out.println(persona);
-        return persona;
+        mPersona.insertaPersona(persona);
     }
 
     public static void eliminaInstitucion(ManejaInstitucion mInst) {
@@ -194,5 +192,57 @@ public class Menu {
         for (Alimento a : alimentos) {
             System.out.println(a);
         }
+    }
+
+    public static void RecogidaDeAlimento(ManejaAlimento mAlimento, ManejaRecoge mRecoge, ManejaPersona mPersona, ManejaInstitucion mInstitucion, ManejaEstablecimiento mEstablecimiento) {
+        String descripcion;
+        System.out.println("Introduzca descripción del alimento: ");
+        descripcion = Teclado.readString();
+
+        String fecha = null;
+        do {
+            System.out.println("Introduce fecha de caducidad (dd/mm/aaaa): ");
+            fecha = Teclado.readString();
+        }while(!fecha.matches("([0][1-9]|[12][0-9]|3[01])(\\/|-)([0][1-9]|[1][0-2])\\2(\\d{4})"));
+        String[] arrayFecha = fecha.split("/");
+        Date date = new Date();
+
+        date.setYear(Integer.parseInt(arrayFecha[2]) - 1900);
+        date.setMonth(Integer.parseInt(arrayFecha[1]) - 1);
+        date.setDate(Integer.parseInt(arrayFecha[0]));
+
+        Alimento alimento = new Alimento(mAlimento.generarClave(), descripcion, date);
+
+        List<Institucion> instituciones = mInstitucion.getInstituciones();
+        List<Persona> personas = mPersona.getPersonas();
+
+        System.out.println("Instituciones actualmente en la base de datos: ");
+        System.out.println("id - CIF - Nombre - Razón Social - Teléfono");
+        for (Institucion i : instituciones) {
+            System.out.println(i.getIdVoluntario() + i.toString());
+        }
+
+        System.out.println("\nPersonas actualmente en la base de datos: ");
+        System.out.println("id - dni - nombre - apellido1 - apellido2 - tlf - email -  edad - localidad");
+        for (Persona i : personas) {
+            System.out.println(i.getIdVoluntario() + i.toString());
+        }
+
+        System.out.println("Introduzca el id del voluntario (persona o institución) que realiza la recogida: ");
+
+        int idVoluntario = Teclado.readInt();
+
+        List<Establecimiento> establecimientos = mEstablecimiento.getEstablecimientos();
+        System.out.println("Establecimientos registrados en la base de datos: ");
+        System.out.println("id - nombre - dirección - localidad");
+        for (Establecimiento e : establecimientos) {
+            System.out.println(e);
+        }
+
+        System.out.println("Introduzca el id del establecimiento en el que se ha recogido el alimento: ");
+        int idEstablecimiento = Teclado.readInt();
+        
+        mRecoge.registraRecogida(idVoluntario, idEstablecimiento, alimento);
+
     }
 }

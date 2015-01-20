@@ -10,6 +10,8 @@ import Datos.Persona;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.LinkedList;
+import java.util.List;
 
 /**
  *
@@ -86,5 +88,31 @@ public class ManejaPersona extends ManejaTabla {
     public int generarClave() {
         ManejaVoluntario mVol = new ManejaVoluntario(conn);
         return mVol.generarClave();
+    }
+
+    public List<Persona> getPersonas() {
+        List<Persona> personas = new LinkedList<>();
+        try (Statement stmt = conn.createStatement()) {
+            String statement = "select * from PERSONA";
+            ResultSet rs = stmt.executeQuery(statement);
+            while (rs.next()) {
+                personas.add(new Persona(
+                        rs.getString("dni"),
+                        rs.getString("nombre"),
+                        rs.getString("apellido1"),
+                        rs.getString("apellido2"),
+                        rs.getString("telefono"),
+                        rs.getString("email"),
+                        rs.getInt("edad"),
+                        rs.getString("localidad"),
+                        rs.getInt("idVoluntario")));
+            }
+        } catch (SQLException e) {
+            System.out.println("Error al consultar la tabla INSTITUCION");
+            System.out.println(e.getMessage());
+            System.out.println(e.getSQLState());
+            System.out.println(e.getErrorCode());
+        }
+        return personas;
     }
 }
