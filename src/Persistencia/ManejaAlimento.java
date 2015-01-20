@@ -62,10 +62,21 @@ public class ManejaAlimento extends ManejaTabla {
                     "'" + a.getDescripcion()+ "'," +
                     "'" + Fecha.fecha(a.getFechaCaducidad())+ "')";
             ResultSet rs = stmt.executeQuery(statement);
-            conn.commit();
         } catch (SQLException ex) {
-            conn.rollBack();
             System.out.println("Error al insertar en la tabla ALIMENTO");
+            System.out.println(ex.getMessage());
+            System.out.println(ex.getSQLState());
+            System.out.println(ex.getErrorCode());
+        }
+    }
+
+    public void eliminaAlimento(int id) {
+
+        try (Statement stmt = conn.createStatement()) {
+            String statement = "delete from ALIMENTO where id = " + id;
+            stmt.executeUpdate(statement);
+        } catch (SQLException ex) {
+            System.out.println("Error al eliminar en la tabla ALIMENTO");
             System.out.println(ex.getMessage());
             System.out.println(ex.getSQLState());
             System.out.println(ex.getErrorCode());

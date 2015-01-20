@@ -56,7 +56,7 @@ public class Menu {
             }
             System.out.println("Introduzca DNI (con letra en mayuscula): ");
             dni = Teclado.readString();
-        } while (!dni.matches("(\\d{8})([A-Z]{1})"));
+        } while (!dni.matches("(\\d{8})([A-Z])"));
         persona.setDni(dni);
 //    private String nombre;
         String nombre = null;
@@ -146,7 +146,7 @@ public class Menu {
             }
             System.out.println("Introduce el CIF de la Institución a eliminar: ");
             CIF = Teclado.readString();
-        } while (!CIF.matches("([A-Z]{1})(\\d{8})"));
+        } while (!CIF.matches("([A-Z])(\\d{8})"));
 
         mInst.eliminaInstitucion(CIF);
     }
@@ -167,7 +167,7 @@ public class Menu {
         do {
             System.out.println("Introduce fecha inicial (dd/mm/aaaa): ");
             fecha1 = Teclado.readString();
-        }while(!fecha1.matches("([0][1-9]|[12][0-9]|3[01])(\\/|-)([0][1-9]|[1][0-2])\\2(\\d{4})"));
+        }while(!fecha1.matches("([0][1-9]|[12][0-9]|3[01])(/|-)([0][1-9]|[1][0-2])\\2(\\d{4})"));
         String[] f1 = fecha1.split("/");
         Date date1 = new Date();
         
@@ -262,7 +262,7 @@ public class Menu {
             }
             System.out.println("Introduzca CIF de la institución que desea modificar (con letra en mayuscula): ");
             cif = Teclado.readString();
-        } while (!cif.matches("([A-Z]{1})(\\d{8})"));
+        } while (!cif.matches("([A-Z])(\\d{8})"));
 
         String cifNuevo = null;
         do {
@@ -271,8 +271,21 @@ public class Menu {
             }
             System.out.println("Introduzca nuevo CIF (con letra en mayuscula): ");
             cifNuevo = Teclado.readString();
-        } while (!cifNuevo.matches("([A-Z]{1})(\\d{8})"));
+        } while (!cifNuevo.matches("([A-Z])(\\d{8})"));
 
         mInstitucion.cambiaCIF(cif, cifNuevo);
+    }
+
+    public static void alimentosCaducados(ManejaAlimento mAlimento) {
+        System.out.println("Eliminando alimentos caducados: ");
+        List<Alimento> alimentos = mAlimento.alimentosCaducados();
+        for (Alimento a : alimentos) {
+            System.out.println(a);
+        }
+
+        for(Alimento a : alimentos) {
+            mAlimento.eliminaAlimento(a.getId());
+        }
+
     }
 }

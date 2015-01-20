@@ -40,6 +40,7 @@ public class Aplicacion_Cliente {
                     Menu.actualizarCIF(mInstitucion);
                     break;
                 case 6:
+                    Menu.alimentosCaducados(mAlimento);
                     break;
                 case 7:
                     break;
