@@ -1,9 +1,8 @@
 
 CREATE OR REPLACE PROCEDURE alimentosCaducados(fechActual IN date, cursorCaducados OUT sys_refcursor, PV_ERROR OUT varchar2) IS
-
-	lv_programa VARCHAR(80) := 'pr_obtener_cursor';
-BEGIN
 	
+BEGIN
+	lv_programa VARCHAR(80) := 'pr_obtener_cursor';
 	
 	OPEN cursorCaducados FOR
 	SELECT *

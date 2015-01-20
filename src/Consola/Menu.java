@@ -191,7 +191,7 @@ public class Menu {
         }
     }
 
-    public static void RecogidaDeAlimento(ManejaAlimento mAlimento, ManejaRecoge mRecoge, ManejaPersona mPersona, ManejaInstitucion mInstitucion, ManejaEstablecimiento mEstablecimiento) {
+        public static void RecogidaDeAlimento(ManejaAlimento mAlimento, ManejaRecoge mRecoge, ManejaPersona mPersona, ManejaInstitucion mInstitucion, ManejaEstablecimiento mEstablecimiento) {
         String descripcion;
         System.out.println("Introduzca descripción del alimento: ");
         descripcion = Teclado.readString();
