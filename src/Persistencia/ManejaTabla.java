@@ -7,10 +7,7 @@ package Persistencia;
 
 import Aplicacion.ConexionOracle;
 
-/**
- *
- * @author caenrique93
- */
+
 public class ManejaTabla {
     
     protected ConexionOracle conn;

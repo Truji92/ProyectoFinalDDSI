@@ -6,10 +6,7 @@ package Datos;
  * and open the template in the editor.
  */
 
-/**
- *
- * @author caenrique93
- */
+
 public class Voluntario {
     private int id;
 

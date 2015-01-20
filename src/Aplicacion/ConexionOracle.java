@@ -71,4 +71,21 @@ public class ConexionOracle {
             ex.printStackTrace();
         }
     }
+
+    public void iniciarTransaccion() {
+        try {
+            conn.setAutoCommit(false);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    public void terminarTransaccion() {
+        try {
+            conn.commit();
+            conn.setAutoCommit(true);
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+    }
 }

@@ -10,10 +10,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-/**
- *
- * @author caenrique93
- */
+
 public class ManejaVoluntario  extends ManejaTabla {
 
     public ManejaVoluntario(ConexionOracle conn) {
@@ -30,6 +27,7 @@ public class ManejaVoluntario  extends ManejaTabla {
             System.out.println(e.getMessage());
             System.out.println(e.getSQLState());
             System.out.println(e.getErrorCode());
+            conn.rollBack();
         }
     }
     
@@ -44,6 +42,7 @@ public class ManejaVoluntario  extends ManejaTabla {
             System.out.println(e.getMessage());
             System.out.println(e.getSQLState());
             System.out.println(e.getErrorCode());
+            conn.rollBack();
         }
         return clave;
     }

@@ -15,10 +15,7 @@ import java.util.Date;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- *
- * @author caenrique93
- */
+
 public class Menu {
 
     public static int principal() {
@@ -48,8 +45,7 @@ public class Menu {
 
     public static void insertaPersona(ManejaPersona mPersona) {
         Persona persona = new Persona();
-//    private int idVoluntario;
-//    private String dni;
+
         String dni = null;
         do {
             if (dni != null) {
@@ -59,7 +55,7 @@ public class Menu {
             dni = Teclado.readString();
         } while (!dni.matches("(\\d{8})([A-Z])"));
         persona.setDni(dni);
-//    private String nombre;
+
         String nombre = null;
         do {
             if (nombre != null) {
@@ -69,7 +65,7 @@ public class Menu {
             nombre = Teclado.readString();
         } while (nombre.isEmpty());
         persona.setNombre(nombre);
-//    private String apellido1;
+
         String apellido1 = null;
         do {
             if (apellido1 != null) {
@@ -79,7 +75,7 @@ public class Menu {
             apellido1 = Teclado.readString();
         } while (apellido1.isEmpty());
         persona.setApellido1(apellido1);
-//    private String apellido2;
+
         String apellido2 = null;
         do {
             if (apellido2 != null) {
@@ -89,7 +85,7 @@ public class Menu {
             apellido2 = Teclado.readString();
         } while (apellido2.isEmpty());
         persona.setApellido2(apellido2);
-//    private String tlf;
+
         String telefono = null;
         do {
             if (telefono != null) {
@@ -99,7 +95,7 @@ public class Menu {
             telefono = Teclado.readString();
         } while (!telefono.matches("(\\d{9})"));
         persona.setTlf(telefono);
-//    private String email;
+
         String email = null;
         do {
             if (email != null) {
@@ -109,7 +105,7 @@ public class Menu {
             email = Teclado.readString();
         } while (!email.matches("([_a-z0-9-]+(\\.[_a-z0-9-]+)*@[a-z0-9-]+(\\.[a-z0-9-]+)*(\\.[a-z]{2,3}))"));
         persona.setEmail(email);
-        //    private int edad;
+
         int edad = Integer.MIN_VALUE;
         do {
             if (edad != Integer.MIN_VALUE) {
@@ -119,7 +115,7 @@ public class Menu {
             edad = Teclado.readInt();
         } while (edad <= 0);
         persona.setEdad(edad);
-        //    private String localidad;
+
         String localidad = null;
         do {
             if (localidad != null) {

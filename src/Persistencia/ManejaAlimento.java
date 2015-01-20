@@ -17,10 +17,7 @@ import java.util.LinkedList;
 import java.util.List;
 import oracle.jdbc.OracleTypes;
 
-/**
- *
- * @author caenrique93
- */
+
 public class ManejaAlimento extends ManejaTabla {
 
     public ManejaAlimento(ConexionOracle conn) {
@@ -28,7 +25,7 @@ public class ManejaAlimento extends ManejaTabla {
         
     }
     public List<Alimento> alimentosCaducados() {
-        String statement = "{ call alimentosCaducados(?) }";
+        String statement = "{ call alimentosCaducados(?,?) }";
         Alimento alimento;
         LinkedList<Alimento> resultado = new LinkedList<>();
         try {
@@ -67,6 +64,7 @@ public class ManejaAlimento extends ManejaTabla {
             System.out.println(ex.getMessage());
             System.out.println(ex.getSQLState());
             System.out.println(ex.getErrorCode());
+            conn.rollBack();
         }
     }
 
@@ -80,6 +78,7 @@ public class ManejaAlimento extends ManejaTabla {
             System.out.println(ex.getMessage());
             System.out.println(ex.getSQLState());
             System.out.println(ex.getErrorCode());
+            conn.rollBack();
         }
     }
     

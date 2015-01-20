@@ -15,10 +15,7 @@ import Datos.Persona;
 import java.util.Date;
 import java.util.LinkedList;
 
-/**
- *
- * @author caenrique93
- */
+
 public class TestManejaRecoge {
     public static void main(String args[]) {
         ConexionOracle conn = new ConexionOracle();
@@ -32,16 +29,10 @@ public class TestManejaRecoge {
         Institucion i = new Institucion();
         LinkedList<Alimento> alimentos = new LinkedList<>();
         LinkedList<Establecimiento> establs = new LinkedList<>();
-        boolean resultado = mr.productosRecogidos(3, p, i, alimentos, establs);
-        if(!resultado) {
-            for(int index=0;index<alimentos.size();index++) {
-                System.out.println(alimentos.get(index).toString() +" " +  establs.get(index).toString());
-            }
-        }  else {
-        //} else if(p != null) {
-            System.out.println(p);
-        //} else if(i != null){
-            System.out.println(i);
+        boolean resultado;
+        mr.productosRecogidos(3, alimentos, establs);
+        for(int index=0;index<alimentos.size();index++) {
+            System.out.println(alimentos.get(index).toString() +" " +  establs.get(index).toString());
         }
         a = new Alimento(11, "papa cocia", new Date(2015, 4, 1));
         mr.registraRecogida(3, 1, a);
@@ -55,18 +46,11 @@ public class TestManejaRecoge {
         mr.registraRecogida(3, 1, a);
         
 
-        resultado = mr.productosRecogidos(3, p, i, alimentos, establs);
-        if(!resultado) {
-            for(int index=0;index<alimentos.size();index++) {
-                System.out.println(alimentos.get(index).toString() +" " +  establs.get(index).toString());
-            }
-        }  else {
-        //} else if(p != null) {
-            System.out.println(p);
-        //} else if(i != null){
-            System.out.println(i);
+        mr.productosRecogidos(3, alimentos, establs);
+        for(int index=0;index<alimentos.size();index++) {
+            System.out.println(alimentos.get(index).toString() +" " +  establs.get(index).toString());
         }
-        
+
         conn.Desconexion();
     }
 }

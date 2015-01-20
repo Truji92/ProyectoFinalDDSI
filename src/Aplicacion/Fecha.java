@@ -10,10 +10,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 
-/**
- *
- * @author usuario
- */
+
 public class Fecha {
     public static String fecha() {
         Date fecha = new Date();

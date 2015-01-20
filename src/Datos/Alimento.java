@@ -9,10 +9,7 @@ import java.util.Date;
  * and open the template in the editor.
  */
 
-/**
- *
- * @author caenrique93
- */
+
 public class Alimento {
     private int id;
     private String descripcion;

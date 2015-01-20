@@ -13,10 +13,7 @@ import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- *
- * @author caenrique93
- */
+
 public class ManejaEstablecimiento extends ManejaTabla {
 
     public ManejaEstablecimiento(ConexionOracle conn) {
@@ -36,6 +33,7 @@ public class ManejaEstablecimiento extends ManejaTabla {
             System.out.println(ex.getMessage());
             System.out.println(ex.getSQLState());
             System.out.println(ex.getErrorCode());
+            conn.rollBack();
         }
     }
 

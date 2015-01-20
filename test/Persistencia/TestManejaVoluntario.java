@@ -6,10 +6,7 @@ package Persistencia;
 
 import Aplicacion.ConexionOracle;
 
-/**
- *
- * @author usuario
- */
+
 public class TestManejaVoluntario {
     public static void main(String[] args) {
         ConexionOracle conn = new ConexionOracle();

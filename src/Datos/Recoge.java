@@ -8,10 +8,7 @@ package Datos;
 import java.util.Date;
 
 
-/**
- *
- * @author caenrique93
- */
+
 public class Recoge {
     
     private int voluntario;

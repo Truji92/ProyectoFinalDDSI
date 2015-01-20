@@ -10,10 +10,7 @@ package Persistencia;
 import Aplicacion.ConexionOracle;
 import Datos.Persona;
 
-/**
- *
- * @author usuario
- */
+
 public class TestManejaPersona {
     public static void main(String[] args) {
         ConexionOracle conn = new ConexionOracle();

@@ -13,10 +13,7 @@ import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- *
- * @author caenrique93
- */
+
 public class ManejaInstitucion extends ManejaTabla {
 
     public ManejaInstitucion(ConexionOracle conn) {
@@ -66,6 +63,7 @@ public class ManejaInstitucion extends ManejaTabla {
                 idVoluntario = rs.getInt("idVoluntario");
             
         } catch (SQLException e) {
+            conn.rollBack();
             System.out.println("Error al consultar la tabla INSTITUCION");
             System.out.println(e.getMessage());
             System.out.println(e.getSQLState());
@@ -107,10 +105,11 @@ public class ManejaInstitucion extends ManejaTabla {
             conn.commit();
         } catch (SQLException e) {
             conn.rollBack();
-            System.out.println("Error al eliminar de la tabla INSTITUCION");
+            System.out.println("Error al modificar la tabla INSTITUCION");
             System.out.println(e.getMessage());
             System.out.println(e.getSQLState());
             System.out.println(e.getErrorCode());
+            conn.rollBack();
         }
     }
 

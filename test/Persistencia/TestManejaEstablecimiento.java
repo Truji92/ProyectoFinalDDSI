@@ -9,10 +9,7 @@ import Aplicacion.ConexionOracle;
 import Datos.Establecimiento;
 import java.util.LinkedList;
 
-/**
- *
- * @author caenrique93
- */
+
 public class TestManejaEstablecimiento {
     
     public static void main(String[] args) {

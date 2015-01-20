@@ -6,10 +6,6 @@ package Datos;
  * and open the template in the editor.
  */
 
-/**
- *
- * @author caenrique93
- */
 public class Persona {
     private int idVoluntario;
     private String dni;

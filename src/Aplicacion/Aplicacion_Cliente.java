@@ -25,25 +25,39 @@ public class Aplicacion_Cliente {
             ManejaInstitucion mInstitucion = new ManejaInstitucion(conexion);
             switch (opcion) {
                 case 1:
+                    conexion.iniciarTransaccion();
                     Menu.insertaPersona(mPersona);
+                    conexion.terminarTransaccion();
                     break;
                 case 2:
+                    conexion.iniciarTransaccion();
                     Menu.eliminaInstitucion(mInstitucion);
+                    conexion.terminarTransaccion();
                     break;
                 case 3:
+                    conexion.iniciarTransaccion();
                     Menu.alimentosRecogidos(mEstablecimiento, mRecoge);
+                    conexion.terminarTransaccion();
                     break;
                 case 4:
+                    conexion.iniciarTransaccion();
                     Menu.RecogidaDeAlimento(mAlimento, mRecoge, mPersona, mInstitucion, mEstablecimiento);
+                    conexion.terminarTransaccion();
                     break;
                 case 5:
+                    conexion.iniciarTransaccion();
                     Menu.actualizarCIF(mInstitucion);
+                    conexion.terminarTransaccion();
                     break;
                 case 6:
+                    conexion.iniciarTransaccion();
                     Menu.alimentosCaducados(mAlimento);
+                    conexion.terminarTransaccion();
                     break;
                 case 7:
+                    conexion.iniciarTransaccion();
                     Menu.productosRecogidosPorVoluntario(mInstitucion, mPersona, mRecoge);
+                    conexion.terminarTransaccion();
                     break;
                 default:
                     System.out.println("¡Adios!");

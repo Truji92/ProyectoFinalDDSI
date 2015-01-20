@@ -8,10 +8,7 @@ import Aplicacion.ConexionOracle;
 import Datos.Institucion;
 import java.util.LinkedList;
 
-/**
- *
- * @author usuario
- */
+
 public class TestManejaInstitucion {
     public static void main(String[] args) {
         ConexionOracle conn = new ConexionOracle();

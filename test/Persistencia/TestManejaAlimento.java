@@ -10,10 +10,7 @@ import Datos.Alimento;
 import java.util.Date;
 import java.util.LinkedList;
 
-/**
- *
- * @author caenrique93
- */
+
 public class TestManejaAlimento {
     public static void main(String[] args) {
         ConexionOracle conn = new ConexionOracle();

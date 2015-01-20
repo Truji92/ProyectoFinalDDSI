@@ -13,10 +13,7 @@ import java.sql.Statement;
 import java.util.LinkedList;
 import java.util.List;
 
-/**
- *
- * @author caenrique93
- */
+
 public class ManejaPersona extends ManejaTabla {
 
     public ManejaPersona(ConexionOracle conn) {
@@ -43,6 +40,7 @@ public class ManejaPersona extends ManejaTabla {
             System.out.println(e.getMessage());
             System.out.println(e.getSQLState());
             System.out.println(e.getErrorCode());
+            conn.rollBack();
         }
     }
     
@@ -62,7 +60,11 @@ public class ManejaPersona extends ManejaTabla {
                     rs.getInt("edad"),
                     rs.getString("localidad"),
                     idVoluntario);
-        } catch (Exception e) {
+        } catch (SQLException ex) {
+            System.out.println("Error al consultar la tabla PERSONA");
+            System.out.println(ex.getMessage());
+            System.out.println(ex.getSQLState());
+            System.out.println(ex.getErrorCode());
         }
         return persona;
     }
@@ -108,7 +110,7 @@ public class ManejaPersona extends ManejaTabla {
                         rs.getInt("idVoluntario")));
             }
         } catch (SQLException e) {
-            System.out.println("Error al consultar la tabla INSTITUCION");
+            System.out.println("Error al consultar la tabla PERSONA");
             System.out.println(e.getMessage());
             System.out.println(e.getSQLState());
             System.out.println(e.getErrorCode());

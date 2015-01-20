@@ -18,10 +18,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Date;
 
-/**
- *
- * @author caenrique93
- */
+
 public class ManejaRecoge extends ManejaTabla {
 
     public ManejaRecoge(ConexionOracle conn) {
@@ -74,6 +71,7 @@ public class ManejaRecoge extends ManejaTabla {
             System.out.println(ex.getMessage());
             System.out.println(ex.getSQLState());
             System.out.println(ex.getErrorCode());
+            conn.rollBack();
         }
         
     }
