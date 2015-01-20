@@ -12,6 +12,7 @@ import Datos.Persona;
 import Persistencia.*;
 
 import java.util.Date;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -215,33 +216,51 @@ public class Menu {
 
         List<Persona> personas = mPersona.getPersonas();
         List<Institucion> instituciones = mInstitucion.getInstituciones();
+        List<Integer> idsVoluntarios = new LinkedList<>();
+        List<Integer> idsEstablecimientos = new LinkedList<>();
 
         System.out.println("Instituciones actualmente en la base de datos: ");
         System.out.println("id - CIF - Nombre - Razón Social - Teléfono");
         for (Institucion i : instituciones) {
             System.out.println(i.getIdVoluntario() + i.toString());
+            idsVoluntarios.add(i.getIdVoluntario());
         }
 
         System.out.println("\nPersonas actualmente en la base de datos: ");
         System.out.println("id - dni - nombre - apellido1 - apellido2 - tlf - email -  edad - localidad");
-        for (Persona i : personas) {
-            System.out.println(i.getIdVoluntario() + i.toString());
+        for (Persona p : personas) {
+            System.out.println(p.getIdVoluntario() + p.toString());
+            idsVoluntarios.add(p.getIdVoluntario());
         }
 
-        System.out.println("Introduzca el id del voluntario (persona o institución) que realiza la recogida: ");
 
-        int idVoluntario = Teclado.readInt();
+        int idVoluntario;
+        boolean primero = true;
+        do {
+            if (!primero) System.out.println("id erroneo");
+            primero = false;
+            System.out.println("Introduzca el id del voluntario (persona o institución) que realiza la recogida: ");
+            idVoluntario = Teclado.readInt();
+        }while (!idsVoluntarios.contains(idVoluntario));
 
         List<Establecimiento> establecimientos = mEstablecimiento.getEstablecimientos();
         System.out.println("Establecimientos registrados en la base de datos: ");
         System.out.println("id - nombre - dirección - localidad");
         for (Establecimiento e : establecimientos) {
             System.out.println(e);
+            idsEstablecimientos.add(e.getId());
         }
 
-        System.out.println("Introduzca el id del establecimiento en el que se ha recogido el alimento: ");
-        int idEstablecimiento = Teclado.readInt();
-        
+
+        int idEstablecimiento;
+        primero = true;
+        do {
+            if (!primero) System.out.println("Id erroneo.");
+            primero = false;
+            System.out.println("Introduzca el id del establecimiento en el que se ha recogido el alimento: ");
+            idEstablecimiento = Teclado.readInt();
+        } while (!idsEstablecimientos.contains(idEstablecimiento));
+
         mRecoge.registraRecogida(idVoluntario, idEstablecimiento, alimento);
 
     }
