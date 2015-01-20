@@ -87,6 +87,7 @@ public class ManejaAlimento extends ManejaTabla {
         try {
             Statement stmt = conn.createStatement();
             ResultSet rs = stmt.executeQuery(statement);
+            rs.next();
             maximaClave = rs.getInt(1);
             maximaClave++;
         } catch (SQLException ex) {
